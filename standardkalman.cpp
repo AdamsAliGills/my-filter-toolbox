@@ -46,7 +46,7 @@ void KalmanFilter::update(const Eigen::VectorXd& y) {
 
 	K = P*C.transpose()*(C*P*C.transpose() + R).inverse();
 	x_hat += K * (y - C*x_hat);
-	P = (I - K*C)*P;
+	P = (I - K*C)*P; # best use the Joseph equation
 }
 
 void KalmanFilter::update_dynamics(const Eigen::MatrixXd A) {
